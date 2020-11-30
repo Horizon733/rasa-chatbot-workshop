@@ -10,12 +10,16 @@ intents:
 - mood_unhappy
 - bot_challenge
 - ask_timings
-- orders_dish_punjabi
+- ask_menu
 - take_order
+- ask_details
 slots:
   name:
     type: text
-    influence_conversation: false
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
   order:
     type: list
     influence_conversation: true
@@ -39,3 +43,12 @@ responses:
   - text: "1. Panner Butter Masala\n2. Pizza\n 3. Burger\n 4. Roti"
   utter_confirm:
   - text: Your order has been taken! Please wait for receipt
+  utter_ask_details:
+  - text: "Please provide us with your details(name and email id)"
+  utter_confirm:
+  - text: "Should I confirm your order?"
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"

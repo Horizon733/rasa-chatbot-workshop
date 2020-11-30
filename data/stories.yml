@@ -54,7 +54,7 @@ stories:
   steps: 
   - intent: greet
   - action: utter_greet
-  - intent: orders_dish_punjabi
+  - intent: ask_menu
   - action: utter_menu
   - intent: take_order
   - slot_was_set: 
@@ -63,3 +63,33 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
+
+- story: order success path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_menu
+  - action: utter_menu
+  - intent: take_order
+  - slot_was_set: 
+    - order: ['thumps up', 'pizza', 'burger']  # TODO add entity
+  - action: utter_ask_details
+  - intent: ask_details
+  - action: utter_confirm
+  - intent: affirm
+  # TODO add action
+
+- story: order failure path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_menu
+  - action: utter_menu
+  - intent: take_order
+  - slot_was_set: 
+    - order: ['thumps up', 'pizza', 'burger']  # TODO add entity
+  - action: utter_ask_details
+  - intent: ask_details
+  - action: utter_confirm
+  - intent: deny
+  # TODO add action

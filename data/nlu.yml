@@ -93,11 +93,15 @@ nlu:
     - timings for restuarant
     - is restuarant open at 12pm?
     - I want to know the timings for restuarant
-- intent: orders_dish_punjabi
+- intent: ask_menu
   examples: |
     - What are different dishes available for north Indian Cusine
     - Dishes for North Indian Cusine
     - Is panner butter masala available?
+    - What is in menu?
+    - Can I get menu?
+    - Menu please!
+    - menu
 - intent: take_order
   examples: |
     - I want to order thumps up, pizza, burger
@@ -110,3 +114,11 @@ nlu:
 - intent: chitchat
   examples: |
     - What is your name
+
+- intent: ask_details
+  examples: |
+    - My name is Dishant and email is dishant@yahoo.com
+    - name is dishant and email dishant@yahoo.com
+    - john, emaiil@something.org
+    - jacob, mail@something.co.in
+    - husein is my name and husien@microsoft.com

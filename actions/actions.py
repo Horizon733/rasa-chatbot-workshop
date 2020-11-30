@@ -7,10 +7,50 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+
+
+def send_email(email,content):
+        try:
+            message = MIMEMultipart()
+            message["Subject"] ="Order Confirmation mail"
+            with open(filename, "rb") as attachment:
+                            part = MIMEBase("application", "octet-stream")
+                            part.set_payload(attachment.read())
+            encoders.encode_base64(part) 
+            part.add_header(
+    "Content-Disposition",
+    f"attachment; filename= {filename}",
+)
+            fromadd = 'dishantgandhi733@gmail.com'
+            toadd = email
+            username = 'dishantgandhi733@gmail.com'
+            obj = open('pass.txt')
+            password = obj.read()
+            server = smtplib.SMTP('smtp.gmail.com', 587,)
+            server.ehlo()
+            context = ssl.create_default_context()
+            server.starttls(context=context)
+            server.login(username, password)
+            msg = MIMEText(content,"html")
+            message.attach(msg)
+            message.attach(part)
+            server.sendmail(fromadd, toadd, message.as_string())
+            server.quit()
+        except SMTPAuthenticationError as x:
+            print("Your email is wrong ",x)
+        except SMTPConnectError as e:
+            print("Your connection Error ",e)
+        except SMTPException as a:
+            print("error: ",a)
+            content_text = "Sorry system run into trouble.. Can you please check again?"
+            print(content_text)
+        return[]
+
+
 #
 #
 # class ActionHelloWorld(Action):
