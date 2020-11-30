@@ -1,0 +1,23 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID a79139f03b234a2f9e6ea61e607c1145
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: greet
+  - action: utter_greet
+  - intent: take_order
+  - action: action_default_fallback
+  - intent: ask_timings
+  - action: utter_timings
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

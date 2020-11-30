@@ -1,0 +1,41 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- ask_timings
+- orders_dish_punjabi
+- take_order
+slots:
+  name:
+    type: text
+    influence_conversation: false
+  order:
+    type: list
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_timings:
+  - text: Our restaurant is opened from Morning 10am till 12am Midnight
+  utter_menu:
+  - text: "1. Panner Butter Masala\n2. Pizza\n 3. Burger\n 4. Roti"
+  utter_confirm:
+  - text: Your order has been taken! Please wait for receipt

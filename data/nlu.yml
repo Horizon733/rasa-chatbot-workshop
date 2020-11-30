@@ -1,0 +1,112 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I am happy
+    - I am a happy person
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: ask_timings
+  examples: |
+    - At what time is restuarant open
+    - what are the timings for restuarant
+    - can you share your closing and opening timings
+    - timings for restuarant
+    - is restuarant open at 12pm?
+    - I want to know the timings for restuarant
+- intent: orders_dish_punjabi
+  examples: |
+    - What are different dishes available for north Indian Cusine
+    - Dishes for North Indian Cusine
+    - Is panner butter masala available?
+- intent: take_order
+  examples: |
+    - I want to order thumps up, pizza, burger
+    - Can I order french fries, frankie
+    - I would like to order masala dosa, sada dosa
+    - order chicken lolipop, pav bhaji, kadhi
+    - dal fry, fried rice, khichdi
+    - manchurain balls, noodles,panner tikka, chicker kolapur
+    - I will order roti, soup, cheese balls, lassi
+- intent: chitchat
+  examples: |
+    - What is your name
