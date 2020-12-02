@@ -104,21 +104,22 @@ nlu:
     - menu
 - intent: take_order
   examples: |
-    - I want to order thumps up, pizza, burger
-    - Can I order french fries, frankie
-    - I would like to order masala dosa, sada dosa
-    - order chicken lolipop, pav bhaji, kadhi
-    - dal fry, fried rice, khichdi
-    - manchurain balls, noodles,panner tikka, chicker kolapur
-    - I will order roti, soup, cheese balls, lassi
+    - I want to order [thumps up]{"entity":"order"}, [pizza]{"entity":"order"}, [burger]{"entity":"order"}
+    - Can I order [french fries]{"entity":"order"}, [frankie]{"entity":"order"}
+    - I would like to order [masala dosa]{"entity":"order"}, [sada dosa]{"entity":"order"}
+    - order [chicken lolipop]{"entity":"order"}, [pav bhaji]{"entity":"order"}, [kadhi]{"entity":"order"}
+    - [dal fry]{"entity":"order"}, [fried rice]{"entity":"order"}, [khichdi]{"entity":"order"}
+    - [manchurain balls], [noodles]{"entity":"order"},[panner tikka]{"entity":"order"}, [chicken kolapuri]{"entity":"order"}
+    - I will order [roti]{"entity":"order"}, [soup]{"entity":"order"}, [cheese balls]{"entity":"order"}, [lassi]{"entity":"order"}
+    - I want to order [ice-cream]{"entity":"order"}
 - intent: chitchat
   examples: |
     - What is your name
 
 - intent: ask_details
   examples: |
-    - My name is Dishant and email is dishant@yahoo.com
-    - name is dishant and email dishant@yahoo.com
-    - john, emaiil@something.org
-    - jacob, mail@something.co.in
-    - husein is my name and husien@microsoft.com
+    - My name is [Dishant]{"entity":"name"} and email is [dishant@yahoo.com]{"entity":"email"}
+    - name is [dishant]{"entity":"name"} and email [dishant@yahoo.com]{"entity":"email"}
+    - [john]{"entity":"name"}, [emaiil@something.org]{"entity":"email"}
+    - [jacob]{"entity":"name"}, [mail@something.co.in]{"entity":"email"}
+    - [husein]{"entity":"name"} is my name and [husien@microsoft.com]{"entity":"email"}

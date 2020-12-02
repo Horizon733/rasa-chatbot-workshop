@@ -10,31 +10,19 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import sqlite3
-from sqlite3 import Error
-
-def create_connection(db_file):
-    conn = None
-    try:
-        conn = sqlite3.connect(db_file)
-    except Error as e:
-        print(e)
-
-    return conn
-
+import pandas as pd
+from rasa_sdk.events import SlotSet, EventType
+import email
+import smtplib, ssl
+from email import encoders
+from smtplib import SMTPConnectError,SMTPException, SMTPAuthenticationError
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 def send_email(email,content):
         try:
             message = MIMEMultipart()
             message["Subject"] ="Order Confirmation mail"
-            with open(filename, "rb") as attachment:
-                            part = MIMEBase("application", "octet-stream")
-                            part.set_payload(attachment.read())
-            encoders.encode_base64(part) 
-            part.add_header(
-    "Content-Disposition",
-    f"attachment; filename= {filename}",
-)
             fromadd = 'dishantgandhi733@gmail.com'
             toadd = email
             username = 'dishantgandhi733@gmail.com'
@@ -47,7 +35,6 @@ def send_email(email,content):
             server.login(username, password)
             msg = MIMEText(content,"html")
             message.attach(msg)
-            message.attach(part)
             server.sendmail(fromadd, toadd, message.as_string())
             server.quit()
         except SMTPAuthenticationError as x:
@@ -61,17 +48,27 @@ def send_email(email,content):
         return[]
 
 
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+class ActionMenu(Action):
+    def name(self):
+        return "action_menu"
+    def run(self, dispatcher: CollectingDispatcher,
+     tracker: Tracker, domain: Dict) -> List[EventType]:
+        menu = pd.read_csv("menu.csv",index_col=0)
+        content = ""
+        menu_list = menu.values.tolist()
+        for i,j in enumerate(menu_list):
+            content += f"{i+1}. {j[0]} --- Rs.{j[1]}\n"
+        dispatcher.utter_message(text=content)
+        return []
+
+class ActionSendMail(Action):
+    def name(self):
+        return "action_send_mail"
+    def run(self, dispatcher: CollectingDispatcher,
+     tracker: Tracker, domain: Dict) -> List[EventType]:
+            email_msg = f"""
+            <h2>{tracker.get_slot("name")}<br>{tracker.get_slot("email")}<h2><br>
+            <h4>Item<h4>{tracker.get_slot("order")}
+            """
+            send_email(tracker.get_slot("email"),email_msg)
+            dispatcher.utter_message("Email has been Sent")

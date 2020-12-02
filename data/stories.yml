@@ -44,8 +44,8 @@ stories:
   - action: utter_greet
   - intent: ask_timings
   - action: utter_timings
-  - intent: orders_dish_punjabi
-  - action: utter_menu
+  - intent: ask_menu
+  - action: action_menu
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
@@ -55,10 +55,20 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_menu
-  - action: utter_menu
+  - action: action_menu
   - intent: take_order
+    entities:
+      - order: ['thumps up', 'pizza', 'burger']
   - slot_was_set: 
     - order: ['thumps up', 'pizza', 'burger']
+  - action: utter_ask_details
+  - intent: ask_details
+    entities: 
+      - name: "dishant"
+      - email: "dishant@gmail.com"
+  - slot_was_set:
+    - name: "dishant"
+    - email: "dishant@gmail.com"
   - action: utter_confirm
   - action: utter_did_that_help
   - intent: affirm
@@ -69,27 +79,43 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_menu
-  - action: utter_menu
+  - action: action_menu
   - intent: take_order
+    entities:
+      - order: ['thumps up', 'pizza', 'burger']
   - slot_was_set: 
-    - order: ['thumps up', 'pizza', 'burger']  # TODO add entity
+    - order: ['thumps up', 'pizza', 'burger']
   - action: utter_ask_details
   - intent: ask_details
+    entities: 
+      - name: "dishant"
+      - email: "dishant@gmail.com"
+  - slot_was_set:
+    - name: "dishant"
+    - email: "dishant@gmail.com"
   - action: utter_confirm
   - intent: affirm
-  # TODO add action
+  - action: action_send_mail
 
 - story: order failure path
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_menu
-  - action: utter_menu
+  - action: action_menu
   - intent: take_order
+    entities:
+      - order: ['thumps up', 'pizza', 'burger']
   - slot_was_set: 
-    - order: ['thumps up', 'pizza', 'burger']  # TODO add entity
+    - order: ['thumps up', 'pizza', 'burger']  
   - action: utter_ask_details
   - intent: ask_details
+    entities: 
+      - name: "dishant"
+      - email: "dishant@gmail.com"
+  - slot_was_set:
+    - name: "dishant"
+    - email: "dishant@gmail.com"
   - action: utter_confirm
   - intent: deny
-  # TODO add action
+  - action: utter_thank_you

@@ -13,11 +13,21 @@ intents:
 - ask_menu
 - take_order
 - ask_details
+- chitchat
+entities:
+- name
+- email
+- order
 slots:
-  name:
+  age:
+    type: float
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
+  email:
     type: text
     influence_conversation: true
-  email:
+  name:
     type: text
     influence_conversation: true
   order:
@@ -41,14 +51,17 @@ responses:
   - text: Our restaurant is opened from Morning 10am till 12am Midnight
   utter_menu:
   - text: "1. Panner Butter Masala\n2. Pizza\n 3. Burger\n 4. Roti"
-  utter_confirm:
-  - text: Your order has been taken! Please wait for receipt
   utter_ask_details:
-  - text: "Please provide us with your details(name and email id)"
+  - text: Please provide us with your details(name and email id)
   utter_confirm:
-  - text: "Should I confirm your order?"
-    buttons:
-    - title: "Yes"
-      payload: "/affirm"
-    - title: "No"
-      payload: "/deny"
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Should I confirm your order?
+  utter_thank_you:
+  - text: Thank you!
+actions:
+- action_menu
+- action_send_mail
