@@ -23,9 +23,9 @@ def send_email(email,content):
         try:
             message = MIMEMultipart()
             message["Subject"] ="Order Confirmation mail"
-            fromadd = 'dishantgandhi733@gmail.com'
+            fromadd = 'email@gmail.com'
             toadd = email
-            username = 'dishantgandhi733@gmail.com'
+            username = 'email@gmail.com'
             obj = open('pass.txt')
             password = obj.read()
             server = smtplib.SMTP('smtp.gmail.com', 587,)
